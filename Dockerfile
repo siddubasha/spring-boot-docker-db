@@ -8,5 +8,7 @@ RUN mvn clean package -DskipTests
 
 #stage 2: Run the application
 FROM eclipse-temurin:17-jdk
+WORKDIR /app
 COPY --from=build /app/spring-boot-docker-db/target/hello-docker-db.jar /app/app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
+
